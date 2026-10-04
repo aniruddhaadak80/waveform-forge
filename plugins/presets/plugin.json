@@ -1,0 +1,11 @@
+{
+  "name": "presets",
+  "version": "0.1.0",
+  "description": "Named edit presets — reviewed cut patterns that are already certified, so a common assembly does not have to be re-derived.",
+  "enabled": true,
+  "priority": 60,
+  "capabilities": ["edl.presets", "edl.presets.list"],
+  "engines": {
+    "@waveformforge": "0.1.0"
+  }
+}

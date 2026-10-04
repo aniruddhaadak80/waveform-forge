@@ -1,0 +1,418 @@
+{
+  "source": "services/engine/tests/golden/timeline_v1.json",
+  "note": "Produced by the real Python engine. apps/web/tests/fixture.test.mjs asserts this file stays identical to the engine golden, so it cannot drift.",
+  "input": {
+    "program": {
+      "frame_rate": {
+        "num": 30000,
+        "den": 1001
+      },
+      "sources": [
+        {
+          "id": "cam_a",
+          "duration_frames": 45000,
+          "label": "Street interview"
+        },
+        {
+          "id": "cam_b",
+          "duration_frames": 30000,
+          "label": "B-roll city"
+        },
+        {
+          "id": "cam_c",
+          "duration_frames": 12000,
+          "label": "Product macro"
+        }
+      ]
+    },
+    "edl": [
+      {
+        "source_id": "cam_a",
+        "src_start_frame": 900,
+        "frame_count": 1200,
+        "token_id": "open"
+      },
+      {
+        "source_id": "cam_b",
+        "src_start_frame": 0,
+        "frame_count": 600,
+        "transition": "dissolve"
+      },
+      {
+        "source_id": "cam_c",
+        "src_start_frame": 240,
+        "frame_count": 90
+      },
+      {
+        "source_id": "cam_a",
+        "src_start_frame": 2097,
+        "frame_count": 45
+      },
+      {
+        "source_id": "cam_b",
+        "src_start_frame": 600,
+        "frame_count": 30,
+        "transition": "dip_to_black"
+      }
+    ]
+  },
+  "certification": {
+    "verdict": "certified",
+    "summary": {
+      "token_count": 5,
+      "total_out_frames": 1965,
+      "total_out_timecode": "00:01:05:15",
+      "total_out_seconds": {
+        "num": 131131,
+        "den": 2000
+      },
+      "distinct_sources": 3,
+      "transition_histogram": {
+        "cut": 3,
+        "dip_to_black": 1,
+        "dissolve": 1
+      },
+      "longest_token_frames": 1200,
+      "error_count": 0,
+      "warning_count": 0
+    },
+    "roundtrip": {
+      "lossless": true,
+      "declared_entries": 5,
+      "reconstructed_entries": 5,
+      "differences": []
+    },
+    "coverage": {
+      "sources": [
+        {
+          "source_id": "cam_a",
+          "duration_frames": 45000,
+          "used_once_frames": 1239,
+          "reused_frames": 3,
+          "dropped_frames": 43758,
+          "covered_frames": 1242,
+          "conserved": true,
+          "dropped_ranges": [
+            {
+              "start": 0,
+              "end": 900,
+              "frame_count": 900
+            },
+            {
+              "start": 2142,
+              "end": 45000,
+              "frame_count": 42858
+            }
+          ],
+          "reuse_sites": [
+            {
+              "start": 2097,
+              "end": 2100,
+              "frame_count": 3,
+              "use_count": 2,
+              "token_ids": ["open", "t00003"]
+            }
+          ]
+        },
+        {
+          "source_id": "cam_b",
+          "duration_frames": 30000,
+          "used_once_frames": 630,
+          "reused_frames": 0,
+          "dropped_frames": 29370,
+          "covered_frames": 630,
+          "conserved": true,
+          "dropped_ranges": [
+            {
+              "start": 630,
+              "end": 30000,
+              "frame_count": 29370
+            }
+          ],
+          "reuse_sites": []
+        },
+        {
+          "source_id": "cam_c",
+          "duration_frames": 12000,
+          "used_once_frames": 90,
+          "reused_frames": 0,
+          "dropped_frames": 11910,
+          "covered_frames": 90,
+          "conserved": true,
+          "dropped_ranges": [
+            {
+              "start": 0,
+              "end": 240,
+              "frame_count": 240
+            },
+            {
+              "start": 330,
+              "end": 12000,
+              "frame_count": 11670
+            }
+          ],
+          "reuse_sites": []
+        }
+      ],
+      "total_dropped_frames": 85038,
+      "total_reused_frames": 3,
+      "all_conserved": true
+    },
+    "violations": [],
+    "errors": [],
+    "warnings": [],
+    "tokens": [
+      {
+        "token_id": "open",
+        "index": 0,
+        "out_start_frame": 0,
+        "out_end_frame": 1200,
+        "frame_count": 1200,
+        "source_id": "cam_a",
+        "src_start_frame": 900,
+        "src_end_frame": 2100,
+        "transition": "cut"
+      },
+      {
+        "token_id": "t00001",
+        "index": 1,
+        "out_start_frame": 1200,
+        "out_end_frame": 1800,
+        "frame_count": 600,
+        "source_id": "cam_b",
+        "src_start_frame": 0,
+        "src_end_frame": 600,
+        "transition": "dissolve"
+      },
+      {
+        "token_id": "t00002",
+        "index": 2,
+        "out_start_frame": 1800,
+        "out_end_frame": 1890,
+        "frame_count": 90,
+        "source_id": "cam_c",
+        "src_start_frame": 240,
+        "src_end_frame": 330,
+        "transition": "cut"
+      },
+      {
+        "token_id": "t00003",
+        "index": 3,
+        "out_start_frame": 1890,
+        "out_end_frame": 1935,
+        "frame_count": 45,
+        "source_id": "cam_a",
+        "src_start_frame": 2097,
+        "src_end_frame": 2142,
+        "transition": "cut"
+      },
+      {
+        "token_id": "t00004",
+        "index": 4,
+        "out_start_frame": 1935,
+        "out_end_frame": 1965,
+        "frame_count": 30,
+        "source_id": "cam_b",
+        "src_start_frame": 600,
+        "src_end_frame": 630,
+        "transition": "dip_to_black"
+      }
+    ]
+  },
+  "timeline": {
+    "frame_rate": {
+      "num": 30000,
+      "den": 1001
+    },
+    "sources": [
+      {
+        "id": "cam_a",
+        "duration_frames": 45000,
+        "label": "Street interview"
+      },
+      {
+        "id": "cam_b",
+        "duration_frames": 30000,
+        "label": "B-roll city"
+      },
+      {
+        "id": "cam_c",
+        "duration_frames": 12000,
+        "label": "Product macro"
+      }
+    ],
+    "tokens": [
+      {
+        "token_id": "open",
+        "index": 0,
+        "out_start_frame": 0,
+        "out_end_frame": 1200,
+        "frame_count": 1200,
+        "source_id": "cam_a",
+        "src_start_frame": 900,
+        "src_end_frame": 2100,
+        "transition": "cut"
+      },
+      {
+        "token_id": "t00001",
+        "index": 1,
+        "out_start_frame": 1200,
+        "out_end_frame": 1800,
+        "frame_count": 600,
+        "source_id": "cam_b",
+        "src_start_frame": 0,
+        "src_end_frame": 600,
+        "transition": "dissolve"
+      },
+      {
+        "token_id": "t00002",
+        "index": 2,
+        "out_start_frame": 1800,
+        "out_end_frame": 1890,
+        "frame_count": 90,
+        "source_id": "cam_c",
+        "src_start_frame": 240,
+        "src_end_frame": 330,
+        "transition": "cut"
+      },
+      {
+        "token_id": "t00003",
+        "index": 3,
+        "out_start_frame": 1890,
+        "out_end_frame": 1935,
+        "frame_count": 45,
+        "source_id": "cam_a",
+        "src_start_frame": 2097,
+        "src_end_frame": 2142,
+        "transition": "cut"
+      },
+      {
+        "token_id": "t00004",
+        "index": 4,
+        "out_start_frame": 1935,
+        "out_end_frame": 1965,
+        "frame_count": 30,
+        "source_id": "cam_b",
+        "src_start_frame": 600,
+        "src_end_frame": 630,
+        "transition": "dip_to_black"
+      }
+    ],
+    "declared_edl": [
+      {
+        "source_id": "cam_a",
+        "src_start_frame": 900,
+        "frame_count": 1200,
+        "token_id": "open"
+      },
+      {
+        "source_id": "cam_b",
+        "src_start_frame": 0,
+        "frame_count": 600,
+        "transition": "dissolve"
+      },
+      {
+        "source_id": "cam_c",
+        "src_start_frame": 240,
+        "frame_count": 90
+      },
+      {
+        "source_id": "cam_a",
+        "src_start_frame": 2097,
+        "frame_count": 45
+      },
+      {
+        "source_id": "cam_b",
+        "src_start_frame": 600,
+        "frame_count": 30,
+        "transition": "dip_to_black"
+      }
+    ],
+    "total_out_frames": 1965,
+    "emitted_entries": 5,
+    "dropped_entries": 0,
+    "violations": []
+  },
+  "roundtrip": {
+    "lossless": true,
+    "declared_entries": 5,
+    "reconstructed_entries": 5,
+    "differences": []
+  },
+  "coverage": {
+    "sources": [
+      {
+        "source_id": "cam_a",
+        "duration_frames": 45000,
+        "used_once_frames": 1239,
+        "reused_frames": 3,
+        "dropped_frames": 43758,
+        "covered_frames": 1242,
+        "conserved": true,
+        "dropped_ranges": [
+          {
+            "start": 0,
+            "end": 900,
+            "frame_count": 900
+          },
+          {
+            "start": 2142,
+            "end": 45000,
+            "frame_count": 42858
+          }
+        ],
+        "reuse_sites": [
+          {
+            "start": 2097,
+            "end": 2100,
+            "frame_count": 3,
+            "use_count": 2,
+            "token_ids": ["open", "t00003"]
+          }
+        ]
+      },
+      {
+        "source_id": "cam_b",
+        "duration_frames": 30000,
+        "used_once_frames": 630,
+        "reused_frames": 0,
+        "dropped_frames": 29370,
+        "covered_frames": 630,
+        "conserved": true,
+        "dropped_ranges": [
+          {
+            "start": 630,
+            "end": 30000,
+            "frame_count": 29370
+          }
+        ],
+        "reuse_sites": []
+      },
+      {
+        "source_id": "cam_c",
+        "duration_frames": 12000,
+        "used_once_frames": 90,
+        "reused_frames": 0,
+        "dropped_frames": 11910,
+        "covered_frames": 90,
+        "conserved": true,
+        "dropped_ranges": [
+          {
+            "start": 0,
+            "end": 240,
+            "frame_count": 240
+          },
+          {
+            "start": 330,
+            "end": 12000,
+            "frame_count": 11670
+          }
+        ],
+        "reuse_sites": []
+      }
+    ],
+    "total_dropped_frames": 85038,
+    "total_reused_frames": 3,
+    "all_conserved": true
+  }
+}

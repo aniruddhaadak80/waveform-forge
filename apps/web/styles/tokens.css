@@ -1,0 +1,111 @@
+/*
+ * THE SINGLE SOURCE OF COLOUR TRUTH.
+ *
+ * check:theme-tokens fails the build if a raw hex/rgb/hsl literal appears in any other
+ * file under apps/web. If you need a new colour, add it here — nowhere else. This is what
+ * stops a codebase drifting into forty slightly different greys.
+ *
+ * Palette: stone + lime, drawn for this build. Stone carries every surface and rule; lime is
+ * the single accent, reserved for the accent and nothing else, so that a green pixel always
+ * means "this is the thing the product is about" — the frame boundary.
+ */
+
+:root {
+  /* surfaces — stone */
+  --bg: #faf9f7;
+  --bg-elevated: #ffffff;
+  --bg-sunken: #f5f5f4;
+
+  /* content */
+  --fg: #1c1917;
+  --fg-muted: #57534e;
+  --fg-subtle: #79716b;
+
+  /* lines — --border is a decorative hairline, --border-strong carries meaning */
+  --border: #e7e5e4;
+  --border-strong: #78716c;
+
+  /* accent — lime. The single accent, used only for the accent. */
+  --accent: #4d7c0f;
+  --accent-hover: #3f6212;
+  --accent-fg: #ffffff;
+  --accent-subtle: #ecfccb;
+
+  /* status */
+  --ok: #15803d;
+  --ok-subtle: #f0fdf4;
+  --warn: #b45309;
+  --warn-subtle: #fffbeb;
+  --danger: #b91c1c;
+  --danger-subtle: #fef2f2;
+  --info: #1d4ed8;
+  --info-subtle: #eff6ff;
+
+  /* spacing scale — spacious density */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1.125rem;
+  --space-5: 1.5rem;
+  --space-6: 2.25rem;
+  --space-7: 3.5rem;
+  --space-8: 5rem;
+
+  /* radii — pill */
+  --radius-1: 8px;
+  --radius-2: 14px;
+  --radius-3: 22px;
+  --radius-4: 999px;
+
+  /* elevation — barely-there; the ladder rules do the structural work, not shadows */
+  --shadow-1: 0 1px 2px rgba(28, 25, 23, 0.06);
+  --shadow-2: 0 2px 10px rgba(28, 25, 23, 0.08);
+  --shadow-3: 0 10px 28px rgba(28, 25, 23, 0.12);
+
+  /* type — IBM Plex Sans + IBM Plex Mono, loaded in layout.tsx with a system fallback */
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.0625rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.75rem;
+
+  /* motion — count-up on data, so --duration-base is the one that matters */
+  --duration-fast: 120ms;
+  --duration-base: 220ms;
+  --ease: cubic-bezier(0.2, 0, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  --bg: #0c0a09;
+  --bg-elevated: #1c1917;
+  --bg-sunken: #000000;
+
+  --fg: #fafaf9;
+  --fg-muted: #a8a29e;
+  --fg-subtle: #8a8580;
+
+  --border: #292524;
+  --border-strong: #78716c;
+
+  --accent: #a3e635;
+  --accent-hover: #bef264;
+  --accent-fg: #1a2e05;
+  --accent-subtle: #1a2e05;
+
+  --ok: #4ade80;
+  --ok-subtle: #052e16;
+  --warn: #fbbf24;
+  --warn-subtle: #2a1a02;
+  --danger: #f87171;
+  --danger-subtle: #2a0808;
+  --info: #60a5fa;
+  --info-subtle: #08203f;
+
+  --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-2: 0 2px 10px rgba(0, 0, 0, 0.55);
+  --shadow-3: 0 10px 28px rgba(0, 0, 0, 0.6);
+}

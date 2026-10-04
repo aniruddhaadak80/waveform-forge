@@ -1,0 +1,23 @@
+appId: dev.aniruddhaadak80.waveform-forge
+productName: waveform-forge
+directories:
+  output: dist
+  buildResources: build
+files:
+  - dist/**/*
+  - package.json
+mac:
+  category: public.app-category.developer-tools
+  target:
+    - dmg
+    - zip
+win:
+  target:
+    - nsis
+    - zip
+linux:
+  category: Development
+  target:
+    - AppImage
+    - deb
+npmRebuild: false

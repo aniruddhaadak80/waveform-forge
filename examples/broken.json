@@ -1,0 +1,13 @@
+{
+  "program": {
+    "frame_rate": { "num": 25, "den": 1 },
+    "sources": [{ "id": "cam_a", "duration_frames": 2500 }]
+  },
+  "edl": [
+    { "source_id": "cam_a", "src_start_frame": 0, "frame_count": 500, "token_id": "cold-open" },
+    { "source_id": "cam_a", "src_start_frame": 2400, "frame_count": 400 },
+    { "source_id": "cam_b", "src_start_frame": 0, "frame_count": 25 },
+    { "source_id": "cam_a", "src_start_frame": 1000, "frame_count": 0 },
+    { "source_id": "cam_a", "src_start_frame": 1200, "frame_count": 100, "transition": "hypercut" }
+  ]
+}

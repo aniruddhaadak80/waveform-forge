@@ -1,0 +1,17 @@
+{
+  "program": {
+    "frame_rate": { "num": 30000, "den": 1001 },
+    "sources": [
+      { "id": "cam_a", "duration_frames": 45000, "label": "Street interview" },
+      { "id": "cam_b", "duration_frames": 30000, "label": "B-roll city" },
+      { "id": "cam_c", "duration_frames": 12000, "label": "Product macro" }
+    ]
+  },
+  "edl": [
+    { "source_id": "cam_a", "src_start_frame": 900, "frame_count": 1200, "token_id": "open" },
+    { "source_id": "cam_b", "src_start_frame": 0, "frame_count": 600, "transition": "dissolve" },
+    { "source_id": "cam_c", "src_start_frame": 240, "frame_count": 90 },
+    { "source_id": "cam_a", "src_start_frame": 2097, "frame_count": 45 },
+    { "source_id": "cam_b", "src_start_frame": 600, "frame_count": 30, "transition": "dip_to_black" }
+  ]
+}
