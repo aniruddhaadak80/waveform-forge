@@ -153,8 +153,23 @@ npm run dev --workspace=@waveformforge/web
 ```
 
 The overview route renders a real certified timeline server-side — the ruled token ladder, the
-frame accounting, the verdict. `/forge` is the form-first editor: it posts a declaration to
-`/api/certify`, which shells the same Python engine the CLI uses.
+frame accounting, the verdict.
+
+`/forge` is the form-first editor. It posts a declaration to `/api/certify`, which shells the
+**same Python engine the CLI uses** — there is deliberately no second implementation of the
+arithmetic in TypeScript.
+
+### Certification needs the engine
+
+`/api/certify` spawns `python -m waveform_forge`, so it works wherever Python 3.11+ is
+available — a local checkout, a container, or a VM. It returns **503 with a fix hint** where it
+is not, rather than guessing a verdict, because a certification endpoint that fabricates a
+verdict is worse than one that is honestly unavailable. The deployed Vercel instance is a Next.js
+runtime with no Python, so `/forge` there shows that error state; the overview route still renders
+real certified data because it reads the committed engine output described below.
+
+To self-host with certification working, run the app from a full checkout (or point
+`PRODUCT_ENGINE_CWD` at `services/engine/src`).
 
 ## The signature visual
 
@@ -198,6 +213,15 @@ one desynced frame.
 | `used + reused + dropped == duration` per source  | `test_properties.py`                                |
 | The tokenizer's own arithmetic is self-consistent | `_arithmetic_differences` inside `verify_roundtrip` |
 | Exact output for a fixed input                    | `test_golden.py` + `timeline_v1.json`               |
+
+### Why the web app ships a fixture
+
+The web app deploys as a self-contained Next.js project and cannot read the engine's golden file
+at runtime, so `apps/web/lib/timeline-fixture.json` is a copy of the engine's output.
+`apps/web/tests/fixture.test.mjs` asserts it is byte-identical to the golden, and
+`assertCertified()` in `apps/web/lib/timeline.ts` re-checks the conservation identity at load — so
+a corrupt fixture throws instead of rendering a number the page cannot stand behind. The engine
+remains the single source of truth; the copy cannot drift without failing CI.
 
 `mypy --strict` and `ruff` both run in `npm run check`. The golden file is regenerated
 deliberately (`python services/engine/regenerate_golden.py`) and the diff is meant to be read.
